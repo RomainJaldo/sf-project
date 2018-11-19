@@ -12,24 +12,25 @@ use App\Entity\User;
 use PHPUnit\Framework\TestCase;
 
 
-class UserTest
+class UserTest extends TestCase
 {
-    public function getUserIdTest()
+    public function testGetUserId()
     {
         $user = new User();
         $result = $user->getId();
 
         // assert that your calculator added the numbers correctly!
-        $this->assertEquals(1, $result);
+        $this->assertSame(null, $result);
     }
 
-    public function setUserNameTest()
+    public function testSetUserName()
     {
         $user = new User();
         $name = "James Bond";
-        $result = $user->setName($name);
+        $user->setName($name);
+        $result = $user->getName();
 
         // assert that your calculator added the numbers correctly!
-        $this->assertEquals($name, $result);
+        $this->assertSame($name, $result);
     }
 }
