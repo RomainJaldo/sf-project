@@ -18,6 +18,11 @@ services:
       - './:/app'
       - './docker/php/fpm.conf:/usr/local/etc/php-fpm.conf:ro'
       - './docker/php/php.ini:/usr/local/etc/php/php.ini:ro'
+    ports:
+      - '24224'
+    networks:
+      default: {}
+      docker-monitoring:
 
   mysql:
     image: mysql:5.7
@@ -30,3 +35,7 @@ services:
 
 volumes:
   db: {}
+
+networks:
+  docker-monitoring:
+    external: true
